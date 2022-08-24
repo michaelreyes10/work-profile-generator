@@ -1,3 +1,4 @@
+const Managers = require('../lib/Manager');
 const theManagers = new theManagers('mike', '123456', 'michaelreyesbusiness@gmail.com', '123');
 
 test('test if we can get the constructor values for the employee object', () => {
