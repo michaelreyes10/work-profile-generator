@@ -12,14 +12,18 @@ test('test if we can get the name from the Name() method', () => {
     expect(theEngineer.Name()).toBe('mike');
 });
 
-test('test if we can get the id from the getId() method', () => {
+test('test if we can get the id from the Id() method', () => {
     expect(theEngineer.Id()).toBe('123456');
 });
 
-test('test if we can get the email from the getEmail() method', () => {
+test('test if we can get the email from the Email() method', () => {
     expect(theEngineer.Email()).toBe('michaelreyesbusiness@gmail.com');
 });
 
 test('test if we can get the github username from the GithubUser() method', () => {
     expect(theEngineer.GithubUser()).toBe('michaelreyes10');
+}); 
+
+test('test if we can get the role from the Role() method', () => {
+    expect(theEngineer.Role()).toBe('Engineer');
 }); 

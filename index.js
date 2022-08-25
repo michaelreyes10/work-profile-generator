@@ -1,8 +1,15 @@
 const inquirer = require('inquirer');
-// const genPage = require('./src/page-temp');
-// const { writeFile, copyFile } = require('./dist/gen-site.js');
+const Managers = require('./lib/Manager');
+const Engineers = require('./lib/Engineer');
+const Interns = require('./lib/Intern');
+const genSite = require('./src/gen-page.js');
+const fs = require("fs");
+const path = require("path");
+const getDIR = path.resolve(__dirname, "outcome")
+const getPath = path.join(getDIR, "generated-output.html");
+const teamMem = [];
 
-const getManager = () => {
+const getManagers = () => {
     return inquirer.prompt([
         {
             type: 'input',
@@ -56,44 +63,63 @@ const getManager = () => {
                 }
             }
         },
+    
+    ]).then(answers => {
+    console.log(answers);
+    const theManagers = new Managers(answers.name, answers.employeeId, answers.email, answers.officeNumber);
+    teamMem.push(theManagers);
+    getMenu();
+})
+}
+
+const getMenu = () => {
+    return inquirer.prompt([
         {
             type: 'list',
             name: 'menu',
             message: 'Please select which option you would like to continue with:',
-            choices: ['add an engineer', 'add an intern', 'finish building my team']
-        }
-    ]);
-};
+            choices: ['add an Engineers', 'add an intern', 'finish building my team']
+        }])
 
-const getEmployee = employeeInfo => {
+        .then(userChoice => {
+            switch (userChoice.menu) {
+                case "add an Engineers":
+                    genEngineer();
+                    break;
+                case "add an intern":
+                    genIntern();
+                    break;
+                default:
+             createTeam();
+            }
+        });
+};
+    
+const genEngineer = () => {
     console.log(`
     
-    Add a New Employee
+    Add a New Engineer
     ==================
     `);
 
-    // If there's no 'employees' array property, create one
-    if (!employeeInfo.employees) {
-        employeeInfo.employees = [];
-    }
-
     return inquirer.prompt([
+
         {
             type: 'input',
-            name: 'engineerName',
-            message: 'What is the name of engineer? (Required)',
+            name: 'name',
+            message: 'What is the name of the Engineers? (Required)',
             validate: engineerName => {
                 if (engineerName) {
                     return true;
                 } else {
-                    console.log('Please enter the name of engineer!');
+                    console.log('Please enter the name of the Engineers!');
                     return false;
                 }
             }
         },
         {
             type: 'input',
-            name: 'employeeID',
+            name: 'employeeId',
             message: 'Enter your employee ID (Required)',
             validate: employeeId => {
                 if (employeeId) {
@@ -121,8 +147,8 @@ const getEmployee = employeeInfo => {
             type: 'input',
             name: 'githubUsername',
             message: 'Enter your Github username. (Required)',
-            validate: githubUser => {
-                if (githubUser) {
+            validate: GithubUser => {
+                if (GithubUser) {
                     return true;
                 } else {
                     console.log('Please enter your Github username!');
@@ -130,34 +156,28 @@ const getEmployee = employeeInfo => {
                 }
             }
         }
-    ]).then(employeeInfo => {
-        employeeInfo.employees.push(employeeInfo);
-        if (employeeInfo.confirmAddEmployee) {
-            return promptProject(employeeInfo);
-        } else {
-            return employeeInfo;
-        }
-    });
+    ]).then(answers => {
+        console.log(answers);
+        const theEngineer = new Engineers(answers.name, answers.employeeId, answers.email, answers.githubUsername);
+        teamMem.push(theEngineer);
+        getMenu();
+    })
 };
-const getIntern = internInfo => {
+
+const genIntern = () => {
     console.log(`
     
     Add a New Intern
-    ================
+    ===============
     `);
-
-    // If there's no 'employees' array property, create one
-    if (!internInfo.interns) {
-        internInfo.interns = [];
-    }
 
     return inquirer.prompt([
         {
             type: 'input',
-            name: 'internName',
+            name: 'name',
             message: 'What is the name of the intern? (Required)',
-            validate: internName => {
-                if (internName) {
+            validate: intName => {
+                if (intName) {
                     return true;
                 } else {
                     console.log('Please enter the name of the intern!');
@@ -167,7 +187,7 @@ const getIntern = internInfo => {
         },
         {
             type: 'input',
-            name: 'employeeID',
+            name: 'employeeId',
             message: 'Enter your employee ID (Required)',
             validate: employeeId => {
                 if (employeeId) {
@@ -193,46 +213,37 @@ const getIntern = internInfo => {
         },
         {
             type: 'input',
-            name: 'githubUsername',
-            message: 'Enter your Github username. (Required)',
-            validate: githubUsername => {
-                if (githubUsername) {
+            name: 'school',
+            message: 'Enter your school name. (Required)',
+            validate: school => {
+                if (school) {
                     return true;
                 } else {
-                    console.log('Please enter your Github username!');
+                    console.log('Please enter your school name!');
                     return false;
                 }
             }
         }
-    ]).then(internInfo => {
-        internData.interns.push(internInfo);
-        if (internInfo.confirmAddIntern) {
-            return promptIntern(internInfo);
-        } else {
-            return internInfo;
-        }
-    });
+    ]).then(answers => {
+        console.log(answers);
+        const theIntern = new Interns(answers.name, answers.employeeId, answers.email, answers.school);
+        teamMem.push(theIntern);
+        getMenu();
+    })
 };
 
-getManager()
-    .then(getEmployee)
-    .then(employeeInfo => {
-        return genPage(employeeInfo);
-    })
-    .then(getIntern)
-    .then(internInfo => {
-        return generatePage(internInfo);
-    })
-    .then(pgHTML => {
-        return writeFile(pgHTML);
-    })
-    .then(writeFileResp => {
-        console.log(writeFileResp);
-        return copyFile();
-    })
-    .then(copyFileResp => {
-        console.log(copyFileResp);
-    })
-    .catch(err => {
-        console.log(err);
-    });
+const createTeam = () => {
+    console.log(`
+    
+    Finished building my team!
+    ==========================
+    `);
+
+    // Create the output directory if the output path doesn't exist
+    if (!fs.existsSync(getDIR)) {
+        fs.mkdirSync(getDIR)
+    }
+    fs.writeFileSync(getPath, genSite(teamMem), "utf-8");
+}
+
+getManagers();

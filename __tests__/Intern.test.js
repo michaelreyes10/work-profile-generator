@@ -23,3 +23,7 @@ test('test if we can get the email from the Email() method', () => {
 test('test if we can get the school name from the School() method', () => {
     expect(theIntern.School()).toBe('School');
 }); 
+
+test('test if we can get the role from the Role() method', () => {
+    expect(theIntern.Role()).toBe('Employee');
+}); 

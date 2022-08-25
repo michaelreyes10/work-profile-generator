@@ -20,7 +20,11 @@ test('test if we can get the email from the Email() method', () => {
     expect(theManagers.Email()).toBe('michaelreyesbusiness@gmail.com');
 });
 
-test('test if we can get the office number from the OfficeNum() method', () => {
+test('test if we can get the office number from the OfficeNumb() method', () => {
     expect(theManagers.OfficeNumber()).toBe('123');
+}); 
+
+test('test if we can get the role from the Role() method', () => {
+    expect(theManagers.Role()).toBe('Manager');
 }); 
 

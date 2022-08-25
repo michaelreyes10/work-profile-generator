@@ -18,3 +18,7 @@ test('test if we can get the id from the Id() method', () => {
 test('test if we can get the email from the Email() method', () => {
     expect(theEmployees.Email()).toBe('michaelreyesbusiness@gmail.com');
 }); 
+
+test('test if we can get the role from the Role() method', () => {
+    expect(theEmployees.Role()).toBe('Employee');
+}); 
