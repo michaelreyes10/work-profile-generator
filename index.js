@@ -147,8 +147,8 @@ const genEngineer = () => {
             type: 'input',
             name: 'githubUsername',
             message: 'Enter your Github username. (Required)',
-            validate: GithubUser => {
-                if (GithubUser) {
+            validate: gitUser => {
+                if (gitUser) {
                     return true;
                 } else {
                     console.log('Please enter your Github username!');
@@ -158,7 +158,7 @@ const genEngineer = () => {
         }
     ]).then(answers => {
         console.log(answers);
-        const theEngineer = new Engineers(answers.name, answers.employeeId, answers.email, answers.githubUsername);
+        const theEngineer = new Engineers(answers.name, answers.employeeId, answers.email, answers.gitUser);
         teamMem.push(theEngineer);
         getMenu();
     })

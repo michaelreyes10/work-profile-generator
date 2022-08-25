@@ -32,7 +32,7 @@ const genEngineers = theEngineers => {
        <ul class="list-group list-group-flush">
         <li class="list-group-item">ID: ${theEngineers.id}</li>
         <li class="list-group-item">Email: <span id="email">${theEngineers.email}</span></li>
-        <li class="list-group-item">Github Username: ${theEngineers.GithubUser}</li>
+        <li class="list-group-item">Github Username: ${theEngineers.gitUser}</li>
         </ul>
     </div>
     `;
@@ -83,7 +83,7 @@ module.exports = team => {
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
         integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/1e0a13a89f.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="../dist/style.css" />
+    <link rel="stylesheet" href="../dist/styles.css" />
     <title>Team Profile Generator</title>
 </head>
 <body>
