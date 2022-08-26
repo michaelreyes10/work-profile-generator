@@ -14,7 +14,7 @@ const genManagers = theManagers => {
            <i class="fas fa-mug-hot"></i>Manager</div>
            <ul class="list-group list-group-flush">
             <li class="list-group-item">ID: ${theManagers.id}</li>
-            <li class="list-group-item">Email: <span id="email"><a href="mailto:"${theManagers.email}</span></li>
+            <li class="list-group-item">Email: <span id="email">${theManagers.email}</span></li>
             <li class="list-group-item">Office Number: ${theManagers.officeNumb}</li>
             </ul>
         </div>
