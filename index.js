@@ -26,10 +26,10 @@ const getManagers = () => {
         },
         {
             type: 'input',
-            name: 'employeeID',
+            name: 'empId',
             message: 'Enter your employee ID (Required)',
-            validate: employeeId => {
-                if (employeeId) {
+            validate: empId => {
+                if (empId) {
                     return true;
                 } else {
                     console.log('Please enter your employee ID!');
@@ -66,7 +66,7 @@ const getManagers = () => {
     
     ]).then(answers => {
     console.log(answers);
-    const theManagers = new Managers(answers.name, answers.employeeId, answers.email, answers.officeNumber);
+    const theManagers = new Managers(answers.name, answers.empId, answers.email, answers.officeNumber);
     teamMem.push(theManagers);
     getMenu();
 })
@@ -119,10 +119,10 @@ const genEngineer = () => {
         },
         {
             type: 'input',
-            name: 'employeeId',
+            name: 'empId',
             message: 'Enter your employee ID (Required)',
-            validate: employeeId => {
-                if (employeeId) {
+            validate: empId => {
+                if (empId) {
                     return true;
                 } else {
                     console.log('Please enter your employee ID!');
@@ -145,7 +145,7 @@ const genEngineer = () => {
         },
         {
             type: 'input',
-            name: 'githubUsername',
+            name: 'gitUser',
             message: 'Enter your Github username. (Required)',
             validate: gitUser => {
                 if (gitUser) {
@@ -158,7 +158,7 @@ const genEngineer = () => {
         }
     ]).then(answers => {
         console.log(answers);
-        const theEngineer = new Engineers(answers.name, answers.employeeId, answers.email, answers.gitUser);
+        const theEngineer = new Engineers(answers.name, answers.empId, answers.email, answers.gitUser);
         teamMem.push(theEngineer);
         getMenu();
     })
@@ -187,10 +187,10 @@ const genIntern = () => {
         },
         {
             type: 'input',
-            name: 'employeeId',
+            name: 'empId',
             message: 'Enter your employee ID (Required)',
-            validate: employeeId => {
-                if (employeeId) {
+            validate: empId => {
+                if (empId) {
                     return true;
                 } else {
                     console.log('Please enter your employee ID!');
@@ -226,7 +226,7 @@ const genIntern = () => {
         }
     ]).then(answers => {
         console.log(answers);
-        const theIntern = new Interns(answers.name, answers.employeeId, answers.email, answers.school);
+        const theIntern = new Interns(answers.name, answers.empId, answers.email, answers.school);
         teamMem.push(theIntern);
         getMenu();
     })

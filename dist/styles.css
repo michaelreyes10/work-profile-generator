@@ -1,6 +1,6 @@
 header {
     color: white;
-    background-color: rgba(250, 0, 0, 0.591);
+    background-color: rgba(15, 32, 188, 0.591);
     padding: 90px;
     display: flex;
     justify-content: center;
@@ -23,7 +23,7 @@ main{
 
 .card-header {
     color: white;
-    background-color: rgba(0, 0, 254, 0.584);
+    background-color: rgba(255, 128, 0, 0.861);
 
 }
 

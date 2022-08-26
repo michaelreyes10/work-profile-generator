@@ -32,7 +32,7 @@ const genEngineers = theEngineers => {
        <ul class="list-group list-group-flush">
         <li class="list-group-item">ID: ${theEngineers.id}</li>
         <li class="list-group-item">Email: <span id="email">${theEngineers.email}</span></li>
-        <li class="list-group-item">Github Username: ${theEngineers.gitUser}</li>
+        <li class="list-group-item">Github Username: <span id="email"> ${theEngineers.gitUser}</span></li>
         </ul>
     </div>
     `;
