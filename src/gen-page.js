@@ -14,7 +14,7 @@ const genManagers = theManagers => {
            <i class="fas fa-mug-hot"></i>Manager</div>
            <ul class="list-group list-group-flush">
             <li class="list-group-item">ID: ${theManagers.id}</li>
-            <li class="list-group-item">Email: <span id="email">${theManagers.email}</span></li>
+            <li class="list-group-item">Email: <span id="email"><a href="mailto:${theManagers.email}">${theManagers.email}</a></span></li>
             <li class="list-group-item">Office Number: ${theManagers.officeNumb}</li>
             </ul>
         </div>
@@ -31,8 +31,8 @@ const genEngineers = theEngineers => {
        <i class="fas fa-glasses"></i>Engineer</div>
        <ul class="list-group list-group-flush">
         <li class="list-group-item">ID: ${theEngineers.id}</li>
-        <li class="list-group-item">Email: <span id="email">${theEngineers.email}</span></li>
-        <li class="list-group-item">Github Username: <span id="email"> ${theEngineers.gitUser}</span></li>
+        <li class="list-group-item">Email: <span id="email"><a href="mailto:${theEngineers.email}">${theEngineers.email}</a></span></li>
+        <li class="list-group-item">Github Username: <a target="_blank" href="https://github.com/${theEngineers.gitUser}">${theEngineers.gitUser}</a></li>
         </ul>
     </div>
     `;
@@ -48,7 +48,7 @@ const genInterns = theInterns => {
        <i class="fas fa-user-graduate"></i>Intern</div>
        <ul class="list-group list-group-flush">
         <li class="list-group-item">ID: ${theInterns.id}</li>
-        <li class="list-group-item">Email: <span id="email">${theInterns.email}</span></li>
+        <li class="list-group-item">Email: <span id="email"><a href="mailto:${theInterns.email}">${theInterns.email}</a></span></li>
         <li class="list-group-item">School: ${theInterns.school}</li>
         </ul>
     </div>
