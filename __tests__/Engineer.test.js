@@ -20,8 +20,8 @@ test('test if we can get the email from the Email() method', () => {
     expect(theEngineer.Email()).toBe('michaelreyesbusiness@gmail.com');
 });
 
-test('test if we can get the github username from the GithubUser() method', () => {
-    expect(theEngineer.GithubUser()).toBe('michaelreyes10');
+test('test if we can get the github username from the gitUser() method', () => {
+    expect(theEngineer.gitUsers()).toBe('michaelreyes10');
 }); 
 
 test('test if we can get the role from the Role() method', () => {
